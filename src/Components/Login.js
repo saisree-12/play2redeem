@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {MDBContainer,MDBRow,MDBCol,MDBCard,MDBCardBody,MDBInput,MDBModal,MDBModalDialog,MDBModalContent,MDBModalHeader,MDBModalTitle,MDBModalBody,MDBModalFooter,} from 'mdb-react-ui-kit';
+import {MDBContainer,MDBRow,MDBCol,MDBCard,MDBCardBody,MDBInput,} from 'mdb-react-ui-kit';
 import NavComp from './NavComp';
 import axios from 'axios';
 import { useNavigate,useLocation } from 'react-router-dom';
@@ -10,7 +10,6 @@ import Loading from './Loader'
 const Login = () => {
   const Navigate = useNavigate();
   const Location = useLocation();
-  const [showModal, setShowModal] = useState(false);
   const [isLoading, setLoading] = useState(true);
   const [uname,setUname] = React.useState('')
   const [pwd,setPwd] = React.useState('')
@@ -32,17 +31,6 @@ const Login = () => {
 
   // Assuming the current URL is "/login?flag=example"
 
-
-  const openModal = (e) => {
-    e.preventDefault();
-    setShowModal(true);
-  };
-
-  const closeModal = () => {
-    setShowModal(false);
-  };
-  
-
   const login = (e) => {
     e.preventDefault();
     axios.post('https://play2redeem.onrender.com/login',{uname:uname,pwd:pwd})
@@ -54,12 +42,11 @@ const Login = () => {
         else{
           if(Location.state.flag===0) Navigate('/games');
           else if(Location.state.flag===1)  Navigate('/games/casino')
-          else if(Location.state.flag===2)  Navigate('/games/scratch')
           else if(Location.state.flag===3)  Navigate('/games/riddle')
           else if(Location.state.flag===4) Navigate('/profile') 
           else Navigate('/games')
         }
-      }     
+      }      
       else { 
           Cookies.remove('process_id')
           setErr("* Invalid Credentials")  
@@ -110,7 +97,7 @@ const Login = () => {
                 <MDBCardBody className="p-5">
                   <MDBInput wrapperClass="mb-4" label="Username" id="form3" type="text" style={{ fontFamily: 'QuickSand' }} onChange={(e) => Uname(e.target.value)}/>
                   <MDBInput wrapperClass="" label="Password" id="form4" type="password" style={{ fontFamily: 'QuickSand' }} onChange={(e) => Pwd(e.target.value)}/>
-                  <button className="btn btn-link ps-0" onClick={(e) => openModal(e)}>Forgot Password</button>
+                  {/* <button className="btn btn-link ps-0" onClick={(e) => openModal(e)}>Forgot Password</button> */}
                   <button className="btn btn-primary btn-lg w-100 mb-4 mt-3" size="md" style={{ fontFamily: 'Bangers' }} onClick={(e) => {login(e)}}>LogIn</button>
                   <p className='h6' style={{color:'red',textAlign:'start',fontFamily:'Josefin Sans'}}>{err}</p><br></br>
                 </MDBCardBody>
@@ -121,25 +108,6 @@ const Login = () => {
         </MDBContainer>
       </div>
     }
-
-      <MDBModal staticBackdrop show={showModal} onHide={closeModal}>
-        <MDBModalDialog>
-          <MDBModalContent>
-            <MDBModalHeader>
-              <MDBModalTitle>Forgot Password</MDBModalTitle>
-              <button className="btn-close" color="none" onClick={closeModal}></button>
-            </MDBModalHeader> 
-            <MDBModalBody>
-              <MDBInput label="Email" id="form1" type="text" style={{ fontFamily: 'QuickSand' }}></MDBInput>
-            </MDBModalBody>
-            <MDBModalFooter>
-            <button onClick={closeModal} className='btn btn-success text-white ms-3' style={{fontFamily:"Bangers"}}>Close</button>
-            <button className='btn btn-success text-white ms-3' style={{fontFamily:"Bangers"}}>Submit</button>
-            </MDBModalFooter>
-          </MDBModalContent>
-        </MDBModalDialog>
-      </MDBModal> 
-
     </>
   ); 
 };

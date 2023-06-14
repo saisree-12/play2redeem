@@ -7,7 +7,6 @@ import ProgressBar from "react-progressbar-on-scroll";
 import Footer from '../Components/Footer'
 
 import spin from '../Assests/spin.png'
-import scratch from '../Assests/scratch.png'
 import card from '../Assests/card.png'
 import { AiFillQuestionCircle } from  'react-icons/ai'
 import { useNavigate } from 'react-router-dom';
@@ -45,15 +44,6 @@ const LandingPage = () => {
     }
   } 
 
-  const Scratch = () => {
-    if(Cookies.get('process_id')){
-      Navigate('/games/scratch')
-    }
-    else{
-      Navigate('/login',{state:{flag:2}})
-    }
-  } 
-
   const Riddle = () => {
     if(Cookies.get('process_id')){
       Navigate('/games/riddle')
@@ -71,11 +61,11 @@ const LandingPage = () => {
         height={10}
         gradientColor="#0b2447"
       />   
-          <Background>
-            <div className='content curve' style={{backgroundColor:'#0B2447'}} >
-            <svg style={{bottom:0,position:"fixed"}} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="orange" fill-opacity="1" d="M0,64L60,96C120,128,240,192,360,224C480,256,600,256,720,234.7C840,213,960,171,1080,138.7C1200,107,1320,85,1380,74.7L1440,64L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path></svg>
-            </div>
-          </Background>  
+        <Background>
+          <div className='content curve' style={{backgroundColor:'#0B2447'}} >
+          <svg style={{bottom:0,position:"fixed"}} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="orange" fill-opacity="1" d="M0,64L60,96C120,128,240,192,360,224C480,256,600,256,720,234.7C840,213,960,171,1080,138.7C1200,107,1320,85,1380,74.7L1440,64L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path></svg>
+          </div>
+        </Background>  
         <NavComp />
         <div style={{ height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'space-evenly', }} className='content'>
             <Fade cascade duration={2000} className='w-100 text-center p-5'>
@@ -87,6 +77,7 @@ const LandingPage = () => {
             </Fade>
         </div>
       </Parallax> 
+
       <Parallax className=''> 
       <Background className='h-100'><div className='h-100' style={{backgroundColor:'orange'}}></div></Background>
       <div className='content' style={{backgroundColor:'orange'}}>
@@ -113,34 +104,10 @@ const LandingPage = () => {
           </Fade>
           </div>
         </div>
-        <div className='d-flex justify-content-evenly flex-wrap-reverse'>
+
+        <div className='d-flex justify-content-evenly flex-wrap ' style={{backgroundColor:'orange'}}>
           <div className='d-flex flex-column justify-content-center'>
           <Fade cascade damping={.1} duration={2000} direction='left'>
-          <MDBCard className='border-0 shadow landing-card p-3 hov-effect' style={{backgroundColor:"rgba(255,255,255,.4)"}} >
-          <MDBCardBody>
-            <MDBCardTitle className='h2' style={{fontFamily:"Bangers"}}>Scratch Mania</MDBCardTitle>
-            <MDBCardText>
-            Scratch & Win Big! Unleash the thrill of our scratch card game. Score coupons, Amazon offers, coins, and more with every scratch. Get scratching now for a chance to win incredible prizes and savings!
-            </MDBCardText>
-            <button onClick={() => {Scratch()}} className='btn btn-success btn-lg' style={{Radius:"30px",fontFamily:"Bangers",fontSize:"20px"}}>Let's Play</button>
-          </MDBCardBody>
-          </MDBCard>
-          </Fade>
-          </div>
-          <div className='d-flex flex-column'>
-          <Fade cascade damping={.1} duration={2000}>
-            <img src={scratch} className='img-hov'></img>
-            </Fade> 
-          </div>
-        </div>
-        <div className='d-flex justify-content-evenly flex-wrap ' style={{backgroundColor:'orange'}}>
-          <div className='d-flex flex-column'>
-          <Fade cascade damping={.1} duration={2000}>
-            <img src={card} className='img-hov'></img>
-            </Fade>
-          </div>
-          <div className='d-flex flex-column justify-content-center'>
-          <Fade cascade damping={.1} duration={2000} direction='right'>
           <MDBCard className='border-0 landing-card shadow p-3 hov-effect' style={{backgroundColor:"rgba(255,255,255,.4)"}}>
           <MDBCardBody>
             <MDBCardTitle className='h2' style={{fontFamily:"Bangers"}}>Card Riddle</MDBCardTitle>
@@ -152,9 +119,15 @@ const LandingPage = () => {
           </MDBCard>
           </Fade>
           </div>
+          <div className='d-flex flex-column'>
+          <Fade cascade damping={.1} duration={2000}>
+            <img src={card} className='img-hov'></img>
+            </Fade>
+          </div>
         </div>
-        </div>
+      </div>
       </Parallax>
+
       <Parallax strength={600}>
         <Background className='content '><div className='content' style={{backgroundColor:'orange'}}></div></Background>
             <div className='container mt-5' style={{fontFamily:'Josefin Sans'}}>

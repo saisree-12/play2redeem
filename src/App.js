@@ -8,7 +8,6 @@ import Signup from './Components/Signup'
 import Login from './Components/Login'
 import Games from './Components/Games'
 import Casino from './Components/Casino';
-import Scratch from './Components/Scratch'
 import Riddle from './Components/Riddle';
 import Profile from './Components/Profile';
 
