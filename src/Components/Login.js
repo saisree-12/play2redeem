@@ -45,7 +45,7 @@ const Login = () => {
 
   const login = (e) => {
     e.preventDefault();
-    axios.post('http://localhost:8888/login',{uname:uname,pwd:pwd})
+    axios.post('https://play2redeem.onrender.com/login',{uname:uname,pwd:pwd})
     .then((res) => {
       if(res.data.valid){
         const encrypteduname = CryptoJS.AES.encrypt(JSON.stringify(uname),key).toString()

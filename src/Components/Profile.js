@@ -20,7 +20,7 @@ const Profile = () => {
         const key = `${process.env.REACT_APP_KEY}`
         const ubytes = CryptoJS.AES.decrypt(Cookies.get('process_id'),key);
         d_uname = JSON.parse(ubytes.toString(CryptoJS.enc.Utf8));
-        axios.post('http://localhost:8888/profile',{uname:d_uname}).then((res) => {
+        axios.post('https://play2redeem.onrender.com/profile',{uname:d_uname}).then((res) => {
             setDetails(res.data[0]);
         }) 
         setTimeout(() => {

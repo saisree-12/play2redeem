@@ -32,7 +32,7 @@ function Login() {
 
   const signup = (e) => {
     e.preventDefault();
-    axios.post('http://localhost:8888/signup',{uname:uname,mail:mail,name:name,pwd:pwd})
+    axios.post('https://play2redeem.onrender.com/signup',{uname:uname,mail:mail,name:name,pwd:pwd})
     .then((res) => {
       if (res.data.valid) {
         setErr("Successfull SignIn");

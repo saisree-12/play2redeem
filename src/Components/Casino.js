@@ -64,7 +64,7 @@ function Spinner(params) {
       setWish("Congratulations !")
       setmsg(`You have won ${winner}`) 
       setFlag(true); 
-      axios.post('http://localhost:8888/win',{uname:uname,win:win,type:type,won:true})
+      axios.post('https://play2redeem.onrender.com/win',{uname:uname,win:win,type:type,won:true})
       .then(res => {
         console.log(res);
       }) 
@@ -74,7 +74,7 @@ function Spinner(params) {
       const key = `${process.env.REACT_APP_KEY}`
       const ubytes = CryptoJS.AES.decrypt(Cookies.get('process_id'),key);
       const uname = JSON.parse(ubytes.toString(CryptoJS.enc.Utf8))
-      axios.post('http://localhost:8888/lose',{uname:uname})
+      axios.post('https://play2redeem.onrender.com/lose',{uname:uname})
       .then(res => {
         console.log(res);
       })

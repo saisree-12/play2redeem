@@ -145,14 +145,14 @@ const Riddle = () => {
                 type="vouchers";
                 win = winner;
               }
-              axios.post('http://localhost:8888/win',{uname:uname,win:win,type:type}) 
+              axios.post('https://play2redeem.onrender.com/win',{uname:uname,win:win,type:type}) 
             }, 0);
           }
           else{
             const key = `${process.env.REACT_APP_KEY}`
             const ubytes = CryptoJS.AES.decrypt(Cookies.get('process_id'),key);
             const uname = JSON.parse(ubytes.toString(CryptoJS.enc.Utf8))
-            axios.post('http://localhost:8888/lose',{uname:uname})
+            axios.post('https://play2redeem.onrender.com/lose',{uname:uname})
             .then(res => {
               console.log(res);
             })
